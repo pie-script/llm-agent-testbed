@@ -41,13 +41,13 @@ different outcomes.
                           │
               ┌───────────┴───────────┐
               ▼                       ▼
-     ┌─────────────────┐     ┌─────────────────┐
-     │   naive_get_user  │     │ hardened_get_user │
-     │   zero validation  │     │  restricted rows   │
-     │   returns EVERY    │     │  refused entirely   │
-     │   field, always     │     │  password NEVER      │
-     │                      │     │  included, regardless │
-     └─────────────────┘     └─────────────────┘
+     ┌───────────────────┐     ┌───────────────────────┐
+     │   naive_get_user  │     │ hardened_get_user     │
+     │   zero validation │     │  restricted rows      │
+     │   returns EVERY   │     │  refused entirely     │
+     │   field, always   │     │  password NEVER       │
+     │                   │     │  included, regardless │
+     └───────────────────┘     └───────────────────────┘
 ```
 
 Both tools expose the identical function signature to the LLM
