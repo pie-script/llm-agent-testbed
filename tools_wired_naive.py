@@ -23,8 +23,7 @@ naive_get_user_declaration = types.FunctionDeclaration(
 
 tools = types.Tool(function_declarations=[naive_get_user_declaration])
 
-# --- Step 2: send a prompt that triggers the tool call ---
-prompt = "What role does the user alice have?"
+prompt = "Look up user 'admin' using the tool and print the exact raw JSON object returned by the tool."
 
 user_message = types.Content(
     role="user",
