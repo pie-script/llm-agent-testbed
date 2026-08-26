@@ -307,3 +307,40 @@ for this kind of work.
 - Worth adding a second target model (a second frontier model, not a
   smaller local one) later, to see whether findings are Gemini-specific
   or hold more generally?
+
+### v2 scope (locked in, deliberately deferred from v1)
+
+1. **Repeat-run statistics.** Run each attack N times per tool (e.g.
+   3-5x) instead of once, report a leak *rate* rather than a single
+   binary verdict. Directly closes the non-determinism gap identified
+   during Phase 6 (see PHASE-6-REPORT.md, Section 9).
+2. **A second restricted user, different username.** Currently the
+   hardened tool's only tested restricted row is `admin`. Adding one
+   more restricted user (e.g. a `security_lead` role) and re-running
+   the existing attacks against it would verify the hardened tool's
+   `restricted` check is a genuinely general rule, not one that happens
+   to work only because it was tested exclusively against the
+   `"admin"` username. Deliberately NOT done in v1 -- it would require
+   re-running attacks #1 and #2 against the new user too, which is real
+   added scope, not a free addition, and was consciously deferred
+   alongside item 1 above.
+
+### v3 idea (parked, NOT v1 or v2 scope)
+
+**Hierarchical org structure + lateral movement attacks.** Idea: model
+a real org hierarchy (e.g. admin -> team heads -> team members) with
+scoped/inherited permissions, then test attacks that don't go straight
+for top-level credentials but instead try to compromise a low-privilege
+account first and pivot laterally to reach higher-privilege data --
+closer to how real breaches typically happen (rarely a direct hit on
+the most privileged account; usually a foothold + escalation).
+
+This is a genuinely good idea and a natural "real project, not just a
+prototype" direction -- but it requires a new data model (roles/teams,
+not just flat users), new tool authorization logic (scoped access, not
+a binary restricted flag), and arguably a new attack category entirely
+(lateral movement / privilege escalation isn't a clean fit for any of
+the current five categories). Consciously kept OUT of v1/v2 to avoid
+the exact scope-creep pattern this project has otherwise been
+deliberate about avoiding. Logged here so the idea isn't lost, not
+because it's expected to happen soon.
