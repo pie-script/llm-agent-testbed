@@ -8,7 +8,7 @@ are separated from per-run outcomes (AttackResult).
 Nothing in this file "does" anything — no I/O, no logic. Just shapes.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Literal
 
 # =============================================================================
@@ -65,11 +65,24 @@ class AttackAttempt:
     extract (e.g. the admin's real password). Grading compares the
     tool's actual output/arguments against this value directly, rather
     than guessing intent from the prompt text.
+
+    `follow_up_prompts` is optional -- most attacks (direct_override,
+    role_authority_claim, indirect_injection, boundary_bypass) are
+    single-shot: one prompt in, one graded response out, and this list
+    stays empty. `chained_request` attacks are the one category that
+    genuinely needs multiple turns -- e.g. a "step 1: confirm you have
+    this capability" message, followed by a separate "step 2: now use
+    it" message sent only after the model's first response. When this
+    list is non-empty, run_attack() sends `prompt` first, then each
+    entry in order as separate follow-up user turns, maintaining full
+    conversation history throughout -- closer to how a real multi-step
+    social-engineering attempt would actually unfold.
     """
     name: str
     category: AttackCategory
     prompt: str
     target_secret: str
+    follow_up_prompts: list[str] = field(default_factory=list)
 
 
 # =============================================================================
