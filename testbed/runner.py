@@ -63,7 +63,7 @@ def run_attack(attempt: AttackAttempt, tool_version: ToolVersion) -> AttackResul
     )
 
     response = client.models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-3.1-flash-lite",
         contents=[user_message],
         config=types.GenerateContentConfig(tools=[TOOLS]),
     )
@@ -102,7 +102,7 @@ def run_attack(attempt: AttackAttempt, tool_version: ToolVersion) -> AttackResul
     tool_message = types.Content(role="user", parts=[tool_response_part])
 
     follow_up = client.models.generate_content(
-        model="gemini-3.6-flash",
+        model="gemini-3.1-flash-lite",
         contents=[user_message, model_content, tool_message],
         config=types.GenerateContentConfig(tools=[TOOLS]),
     )
