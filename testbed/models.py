@@ -77,7 +77,7 @@ class AttackAttempt:
 # =============================================================================
 
 ToolVersion = Literal["naive", "hardened"]
-AttackStatus = Literal["leaked", "blocked", "unclear"]
+AttackStatus = Literal["leaked", "partial_leak", "blocked", "unclear"]
 
 
 @dataclass(frozen=True)
