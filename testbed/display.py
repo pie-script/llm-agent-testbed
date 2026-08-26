@@ -21,6 +21,7 @@ def print_result(result: AttackResult) -> None:
     """
     status_labels = {
         "leaked": "LEAKED",
+        "partial_leak": "PARTIAL LEAK",
         "blocked": "BLOCKED",
         "unclear": "UNCLEAR",
     }
