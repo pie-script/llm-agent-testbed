@@ -125,22 +125,35 @@ The testbed exercises 5 key vulnerability categories defined in [attacks.py](fil
 ```
 llm-agent-testbed/
 ├── testbed/
-│   ├── models.py                 # Pure dataclass shapes: FakeUser, AttackAttempt, AttackResult
-│   ├── fake_data.py              # Mock backend storage & seeded injection payloads
-│   ├── tools_naive.py            # Baseline unvalidated lookup implementation
-│   ├── tools_hardened.py         # Hardened implementation with boundary defenses
+│   ├── __init__.py               # Package initializer
 │   ├── attacks.py                # Structured attack checklist (5 categories)
-│   ├── runner.py                 # Multi-turn attack execution engine
-│   └── display.py                # Formatted terminal display & verdict styling
-├── diagrams/                     # Architecture, per-attack, and summary SVG/PNG visual assets
-├── tests/
-│   └── test_grading.py           # Unit verification for grading logic
-├── tools_wired_naive.py          # Phase 4 verification harness (Naive Tool)
-├── tools_wired_hardened.py       # Phase 4 verification harness (Hardened Tool)
-├── V1-RESULTS.md                 # Full detailed walk-through of all 5 attack results
-├── PHASE-6-REPORT.md             # In-depth test report, API quotas & failure analysis
+│   ├── display.py                # Formatted terminal display & verdict styling
+│   ├── fake_data.py              # Mock backend storage & seeded injection payloads
+│   ├── models.py                 # Pure dataclass shapes: FakeUser, AttackAttempt, AttackResult
+│   ├── runner.py                 # Multi-turn attack execution engine & grading logic
+│   ├── tools_hardened.py         # Hardened implementation with boundary defenses
+│   └── tools_naive.py            # Baseline unvalidated lookup implementation
+├── diagrams/
+│   ├── 01-architecture-overview.svg
+│   ├── 02-naive-vs-hardened-flow.svg
+│   ├── 03-attack1-direct-override.svg
+│   ├── 04-attack2-role-authority.svg
+│   ├── 05-attack3-indirect-injection.svg
+│   ├── 06-attack4-boundary-bypass.svg
+│   ├── 07-attack5-chained-request.svg
+│   ├── 08-summary-table.svg
+│   └── 09-summary-chart.png
+├── .env                          # Local API keys (ignored by git)
+├── .gitignore                    # Standard exclusion rules
 ├── BUILD-JOURNAL.md              # Engineering decision log & architectural evolution
+├── LICENSE                       # MIT License
+├── NOTES.md                      # Project notes & phase progress tracker
+├── PHASE-6-REPORT.md             # In-depth test report, API quotas & failure analysis
+├── README.md                     # Main project overview & documentation
+├── V1-RESULTS.md                 # Full detailed walk-through of all 5 attack results
 ├── pyproject.toml                # Project metadata & dependencies
+├── tools_wired_hardened.py       # Standalone demo script (Hardened Tool)
+├── tools_wired_naive.py          # Standalone demo script (Naive Tool)
 └── uv.lock                       # Deterministic dependency lockfile
 ```
 
