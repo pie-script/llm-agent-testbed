@@ -38,6 +38,10 @@ Much like **SQL Injection** stemmed from unparameterized string concatenation ra
 
 ## 🏛️ Core Architecture
 
+<div align="center">
+  <img src="diagrams/01-architecture-overview.svg" alt="Architecture Overview" width="100%" />
+</div>
+
 ```mermaid
 flowchart TD
     subgraph Adversary["Adversarial Inputs"]
@@ -85,6 +89,10 @@ flowchart TD
 ---
 
 ## ⚔️ The Two Tool Paradigms
+
+<div align="center">
+  <img src="diagrams/02-naive-vs-hardened-flow.svg" alt="Naive vs Hardened Flow" width="100%" />
+</div>
 
 Both tools expose an **identical function signature** to the LLM agent (`get_user(username: str)`). The model cannot determine which tool version it is interacting with.
 
