@@ -120,7 +120,7 @@ The testbed exercises 5 key vulnerability categories defined in [attacks.py](fil
 
 ---
 
-## 📊 Data Model & Separation of Concerns
+## 📊 Data Model & Directory Layout
 
 ```
 llm-agent-testbed/
@@ -129,14 +129,17 @@ llm-agent-testbed/
 │   ├── fake_data.py              # Mock backend storage & seeded injection payloads
 │   ├── tools_naive.py            # Baseline unvalidated lookup implementation
 │   ├── tools_hardened.py         # Hardened implementation with boundary defenses
-│   ├── attacks.py                # Structured attack checklist
-│   ├── agent.py                  # Multi-turn tool execution orchestration
-│   ├── grading.py                # Ground-truth argument & output inspection grader
-│   └── report.py                 # Markdown & tabular security report generation
+│   ├── attacks.py                # Structured attack checklist (5 categories)
+│   ├── runner.py                 # Multi-turn attack execution engine
+│   └── display.py                # Formatted terminal display & verdict styling
+├── diagrams/                     # Architecture, per-attack, and summary SVG/PNG visual assets
 ├── tests/
 │   └── test_grading.py           # Unit verification for grading logic
 ├── tools_wired_naive.py          # Phase 4 verification harness (Naive Tool)
 ├── tools_wired_hardened.py       # Phase 4 verification harness (Hardened Tool)
+├── V1-RESULTS.md                 # Full detailed walk-through of all 5 attack results
+├── PHASE-6-REPORT.md             # In-depth test report, API quotas & failure analysis
+├── BUILD-JOURNAL.md              # Engineering decision log & architectural evolution
 ├── pyproject.toml                # Project metadata & dependencies
 └── uv.lock                       # Deterministic dependency lockfile
 ```
@@ -172,6 +175,14 @@ uv run python tools_wired_hardened.py
 
 ---
 
+## 📑 Detailed Reports & Findings
+
+- 📖 **[V1-RESULTS.md](V1-RESULTS.md)** — Comprehensive breakdown of all 5 attacks with result diagrams, prompt iterations, and security takeaways.
+- 🔬 **[PHASE-6-REPORT.md](PHASE-6-REPORT.md)** — In-depth report on test harness validation, API constraints, and model behavior.
+- 📓 **[BUILD-JOURNAL.md](BUILD-JOURNAL.md)** — Step-by-step engineering decision log and thought process.
+
+---
+
 ## 📈 Phase Progress
 
 - [x] **Phase 0** — Verified Gemini 3.6 Flash function calling loop end-to-end.
@@ -180,9 +191,9 @@ uv run python tools_wired_hardened.py
 - [x] **Phase 3** — Formulated naive and hardened defense rules.
 - [x] **Phase 4** — Wired tools to live LLM API loop and confirmed baseline behavior.
 - [x] **Phase 5** — Authored multi-category attack suite with planted indirect injection vectors.
-- [ ] **Phase 6** — Automated batch runner execution and response grader.
-- [ ] **Phase 7** — Spot-checking ambiguous outcomes (`unclear` classification review).
-- [ ] **Phase 8** — Automated evaluation reporting & comparative metrics generation.
+- [x] **Phase 6** — Automated batch runner execution, multi-turn support, and response grading.
+- [x] **Phase 7** — Spot-checking ambiguous outcomes (`unclear` classification review).
+- [x] **Phase 8** — Generated comprehensive evaluation writeups, summary tables, and visual charts.
 
 ---
 
