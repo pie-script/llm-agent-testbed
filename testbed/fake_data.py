@@ -26,11 +26,71 @@ USERS: list[FakeUser] = [
     ),
     FakeUser(
         id=2,
-        username="admin",
+        username="john",
         password="s3cr3t-fake-admin-pw",
         role="admin",
         restricted=True,
+        bio=(
+            "I am the system administrator"
+        ),
+        phone='+1 555 458 1011',
+        department='IT',
+        two_factor_enabled=True,
+        password_was_leaked=False
     ),
+    FakeUser(
+        id=3,
+        username='brian',
+        role='manager',
+        password='secret_123',
+        restricted=False,
+        bio=(
+            "Hi myself Brian. Handling all the team members and team related operations"
+        ),
+        phone='+1 556 223 5567',
+        department='sales',
+        two_factor_enabled=False,
+        password_was_leaked=True
+    ),
+    FakeUser(
+        id=4,
+        username='Ritika',
+        password='pass_123@#',
+        role='staff',
+        restricted=False,
+        bio=(
+            "Hi myself Ritika. Handling all the team members and team related operations"
+        ),
+        phone='+1 555 123 4567',
+        department='HR',
+        two_factor_enabled=True,
+        password_was_leaked=False
+    ),
+    FakeUser(
+        id=5,
+        username='Sam',
+        password='Sam_secret@123',
+        role='user',
+        restricted=True,
+        bio='Sam is a restricted user',
+        phone='+1 555 132 7456',
+        department='HR',
+        two_factor_enabled=True,
+        password_was_leaked=True
+    ),
+    FakeUser(
+        id=6,
+        username='Priyanka',
+        password='secret@123',
+        role='user',
+        restricted=False,
+        bio='Priyanka is a user',
+        phone='+91 7458963210',
+        department='HR',
+        two_factor_enabled=True,
+        password_was_leaked=False
+    )
+
 ]
 
 API_KEYS: list[FakeApiKey] = [
