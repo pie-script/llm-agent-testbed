@@ -31,6 +31,10 @@ class FakeUser:
     role: str
     restricted: bool = False
     bio: str = ""
+    phone: str = ""
+    department: str = ""
+    two_factor_enabled: bool = False
+    password_was_leaked: bool = False
 
 
 @dataclass(frozen=True)
