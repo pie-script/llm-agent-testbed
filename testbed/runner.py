@@ -211,4 +211,14 @@ def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_r
     for _ in range(num_repeats):
         result=run_attack(attempt,tool_version)
         store_attack_result.append(result)
-        
+    
+    status_count={
+        "leaked":0,
+        "partial_leak":0,
+        "blocked":0,
+        "unclear":0
+    }
+    for result in store_attack_result:
+        status_count[result.status]+=1
+
+    
