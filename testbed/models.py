@@ -114,3 +114,17 @@ class AttackResult:
     tool_version: ToolVersion
     status: AttackStatus
     evidence: str
+
+@dataclass(frozen=True)
+class RepeatedAttackResult:
+    """
+    Outcome of running one AttackAttempt against one tool version.
+    """
+    attempt: AttackAttempt
+    tool_version: ToolVersion
+    individual_results: list[AttackResult]
+    leaked_count: int
+    blocked_count: int
+    partial_leak_count: int
+    unclear_count: int
+    leak_rate: float
