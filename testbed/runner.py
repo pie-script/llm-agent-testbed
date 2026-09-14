@@ -205,3 +205,5 @@ def run_attack(attempt: AttackAttempt, tool_version: ToolVersion) -> AttackResul
             f"Final model response: {final_text}"
         ),
     )
+
+def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_repeats: int) 
