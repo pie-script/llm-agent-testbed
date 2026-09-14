@@ -118,7 +118,7 @@ class AttackResult:
 @dataclass(frozen=True)
 class RepeatedAttackResult:
     """
-    Outcome of running one AttackAttempt against one tool version.
+    Outcome of Attack which is being repeated many times
     """
     attempt: AttackAttempt
     tool_version: ToolVersion
