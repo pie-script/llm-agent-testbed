@@ -218,7 +218,14 @@ def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_r
         "blocked":0,
         "unclear":0
     }
-    for result in store_attack_result:
-        status_count[result.status]+=1
-
     
+    for result in store_attack_result:
+        status_count[result.status] += 1
+
+    if len(store_attack_result) > 0:
+        leak_rate = status_count["leaked"] / len(store_attack_result)
+    else:
+        leak_rate = 0
+    
+
+
