@@ -15,6 +15,7 @@ what the tool actually returned or what the model said, rather than
 trying to guess intent from the model's phrasing.
 """
 
+from testbed.models import RepeatedAttackResult
 import os
 import json
 from dotenv import load_dotenv
@@ -206,7 +207,7 @@ def run_attack(attempt: AttackAttempt, tool_version: ToolVersion) -> AttackResul
         ),
     )
 
-def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_repeats: int):
+def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_repeats: int) -> RepeatedAttackResult
     store_attack_result=[]
     for _ in range(num_repeats):
         result=run_attack(attempt,tool_version)
@@ -227,5 +228,13 @@ def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_r
     else:
         leak_rate = 0
     
-
+    return RepeatedAttackResult(
+    attempt,
+    tool_version,
+    individual_results=store_attack_result,
+    leaked_count=status_count["leaked"],
+    partial_leak_count=status_count["partial_leak"],
+    blocked_count=status_count["blocked"],
+    unclear_count=status_count["unclear"],
+    leak_rate=leak_rate)
 
