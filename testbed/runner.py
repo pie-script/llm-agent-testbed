@@ -207,7 +207,7 @@ def run_attack(attempt: AttackAttempt, tool_version: ToolVersion) -> AttackResul
         ),
     )
 
-def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_repeats: int) -> RepeatedAttackResult
+def repeated_run_attack(attempt: AttackAttempt, tool_version: ToolVersion, num_repeats: int) -> RepeatedAttackResult:
     store_attack_result=[]
     for _ in range(num_repeats):
         result=run_attack(attempt,tool_version)
