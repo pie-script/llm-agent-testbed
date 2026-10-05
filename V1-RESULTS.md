@@ -1,10 +1,5 @@
 # v1 Results - All Five Attacks
 
-This is the full, plain-English record of every attack tested in v1 -
-what was tried, what changed along the way, what happened, and what it
-means. Written so someone with no prior context on this project can
-read it and understand the finding.
-
 **One-sentence summary of the whole project:** the same AI model,
 given the exact same instructions, either leaked a real secret or
 correctly refused to - and the *only* thing that changed between those
